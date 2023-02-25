@@ -19,8 +19,8 @@ public:
     map(int size);
 
     int getSize();
-    void setObj(kapal x);
-    void deleteObj(kapal x);
+    void setObj(Kapal x);
+    void deleteObj(Kapal x);
     void setMap();
     void showMap();
 

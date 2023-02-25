@@ -6,6 +6,8 @@
 #define TUGASBESAR_PROGRAMMING_KEL_8_KAPAL_H
 #include <cstdlib>
 #include <string>
+#include "kapal.h"
+
 using namespace std;
 
 class Kapal {

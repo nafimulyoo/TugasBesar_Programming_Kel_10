@@ -59,19 +59,3 @@ int Kapal::getX() {
 int Kapal::getY() {
     return this->position_y;
 }
-<<<<<<< HEAD
-int Kapal::getHealth() {
-    return this->health;
-}
-int Kapal::getDamage() {
-    return this->damage;
-}
-int Kapal::getMaxShootRange() {
-    return this->max_shoot_range;
-}
-string kapal::getName() {
-    return this->name;
-}
-bool kapal::isDeath() {
-    return this->heath<=0;
-}

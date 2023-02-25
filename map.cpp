@@ -10,10 +10,10 @@ map::map(int size) {
     this->objMap = new string*[this->size+2];
 }
 
-void map::setObj(kapal x) {
+void map::setObj(Kapal x) {
     this->objMap[x.getX()+1][x.getY()+1]=x.getName();
 }
-void map::deleteObj(kapal x) {
+void map::deleteObj(Kapal x) {
     this->objMap[x.getX()+1][x.getY()+1]=" ";
 }
 void map::setMap() {
