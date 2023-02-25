@@ -5,7 +5,8 @@
 #include "kapal.h"
 
 
-kapal::kapal(int x, int y) {
+kapal::kapal(string name,int x, int y) {
+    this->name=name;
     this->position_x=x;
     this->position_y=y;
     this->heath=1000;
