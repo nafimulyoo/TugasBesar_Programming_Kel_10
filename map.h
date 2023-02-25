@@ -20,6 +20,7 @@ public:
 
     int getSize();
     void setObj(kapal x);
+    void deleteObj(kapal x);
     void setMap();
     void showMap();
 
