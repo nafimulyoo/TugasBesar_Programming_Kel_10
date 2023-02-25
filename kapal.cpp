@@ -33,3 +33,6 @@ int kapal::getHealth() {
 string kapal::getName() {
     return this->name;
 }
+bool kapal::isDeath() {
+    return this->heath<=0;
+}

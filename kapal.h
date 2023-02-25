@@ -26,6 +26,7 @@ public:
     int getY();
     string getName();
     int getHealth();
+    bool isDeath();
 };
 
 
