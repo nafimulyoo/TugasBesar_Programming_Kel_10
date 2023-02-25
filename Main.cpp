@@ -1,3 +1,7 @@
- int main(){
-     return 0;
+#include "Kapal.h"
+
+int main(){
+    Kapal kapalPlayer;
+    Kapal kapalMusuh;
+    return 0;
 }
