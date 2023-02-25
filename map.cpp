@@ -11,5 +11,5 @@ map::map(int size) {
 }
 
 void map::setObj(kapal x) {
-    this->objMap[x.getX()][x.getY()]=""
+    this->objMap[x.getX()][x.getY()]=
 }

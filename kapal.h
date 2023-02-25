@@ -24,6 +24,7 @@ public:
 
     int getX();
     int getY();
+    string getName();
     int getHealth();
 };
 

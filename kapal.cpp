@@ -30,3 +30,6 @@ int kapal::getY() {
 int kapal::getHealth() {
     return this->heath;
 }
+string kapal::getName() {
+    return this->name;
+}
