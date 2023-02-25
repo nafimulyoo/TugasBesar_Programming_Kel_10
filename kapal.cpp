@@ -3,32 +3,71 @@
 //
 
 #include "kapal.h"
+#include <iostream>
+#include <cstdlib>
 
 
-kapal::kapal(string name,int x, int y) {
-    this->name=name;
-    this->position_x=x;
-    this->position_y=y;
-    this->heath=1000;
-}
-
-void kapal::setX(int x) {
+void Kapal::setX(int x) {
     this->position_x=x;
 }
-void kapal::setY(int y) {
+void Kapal::setY(int y) {
     this->position_y=y;
 }
-void kapal::setHealth(int health) {
-    this->heath=health;
+void Kapal::setHealth(int health) {
+    this->health=health;
 }
-int kapal::getX() {
+
+void Kapal::move(string direction) {
+    if (direction=="up"){
+        this->position_y+=1;
+    } else if (direction=="down"){
+        this->position_y-=1;
+    } else if (direction=="left"){
+        this->position_x-=1;
+    } else if (direction=="right"){
+        this->position_x+=1;
+    }
+}
+
+void Kapal::attack(Kapal &other) {
+    // calculate range
+    int range = this->calculateRange(other);
+    if (range<=this->max_shoot_range){
+        other.health-=this->damage;
+        cout << "Attack success" << endl;
+    }
+    else {
+        cout << "Out of range" << endl;
+    }
+}
+
+int Kapal::calculateRange(Kapal other) {
+    int x = abs(this->position_x-other.position_x);
+    int y = abs(this->position_y-other.position_y);
+    return x+y;
+}
+
+void Kapal::decreaseHealth(int damage) {
+    this->health-=damage;
+}
+
+
+
+int Kapal::getX() {
     return this->position_x;
 }
-int kapal::getY() {
+int Kapal::getY() {
     return this->position_y;
 }
-int kapal::getHealth() {
-    return this->heath;
+<<<<<<< HEAD
+int Kapal::getHealth() {
+    return this->health;
+}
+int Kapal::getDamage() {
+    return this->damage;
+}
+int Kapal::getMaxShootRange() {
+    return this->max_shoot_range;
 }
 string kapal::getName() {
     return this->name;
