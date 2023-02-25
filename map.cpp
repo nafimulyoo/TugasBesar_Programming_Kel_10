@@ -4,19 +4,19 @@
 
 #include "map.h"
 
-map::map(int size) {
+Map::Map(int size) {
     this->size=size;
 
     this->objMap = new string*[this->size+2];
 }
 
-void map::setObj(Kapal x) {
+void Map::setObj(Kapal x) {
     this->objMap[x.getX()+1][x.getY()+1]=x.getName();
 }
-void map::deleteObj(Kapal x) {
+void Map::deleteObj(Kapal x) {
     this->objMap[x.getX()+1][x.getY()+1]=" ";
 }
-void map::setMap() {
+void Map::setMap() {
     for(int i=0;i<this->size+2;i++){
         for(int j=0;j< this->size+2;j++){
             if(i==0||j==0||i== this->size+1||j== this->size+1) {
@@ -27,7 +27,12 @@ void map::setMap() {
         }
     }
 }
-void map::showMap() {
+
+string Map::getObj(int x, int y) {
+    return this->objMap[x][y];
+}
+
+void Map::showMap() {
     for(int i=0;i<this->size+2;i++){
         for(int j=0;j< this->size+2;j++){
             cout<< this->objMap[i][j];

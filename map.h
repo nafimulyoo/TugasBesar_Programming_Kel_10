@@ -11,14 +11,15 @@
 
 using namespace std;
 
-class map {
+class Map {
 private:
     int size;
     string** objMap;
 public:
-    map(int size);
+    Map(int size);
 
     int getSize();
+    string getObj(int x, int y);
     void setObj(Kapal x);
     void deleteObj(Kapal x);
     void setMap();
