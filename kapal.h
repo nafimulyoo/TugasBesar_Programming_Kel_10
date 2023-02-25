@@ -15,14 +15,16 @@ private:
     int position_y;
     int damage;
     int max_shoot_range;
+    string name;
 
 public:
-    Kapal() {
+    Kapal(string name) {
         this->health=100;
         this->position_x=0;
         this->position_y=0;
         this->damage=10;
         this->max_shoot_range=4;
+        this->name = name;
     }
 
     void setX(int x);
@@ -37,9 +39,12 @@ public:
 
     int getX();
     int getY();
+    string getName();
     int getHealth();
     int getDamage();
     int getMaxShootRange();
+    bool isDeath();
+
 };
 
 
