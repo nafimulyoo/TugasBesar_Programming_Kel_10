@@ -17,6 +17,7 @@ private:
     string** objMap;
 public:
     Map(int size);
+    ~Map();
 
     int getSize();
     string getObj(int x, int y);

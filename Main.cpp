@@ -1,5 +1,5 @@
-#include "Kapal.h"
-#include "Map.h"
+#include "kapal.h"
+#include "map.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -8,7 +8,7 @@ void moveEnemy(Kapal &enemy, Map &map) {
     int direction = rand() % 4 + 1;
     switch (direction) {
         case 1:
-            if (enemy.getY() + 1 < map.getSize()) {
+            if (enemy.getY() + 1+8 < map.getSize()) {
                 if (map.getObj(enemy.getX(), enemy.getY() + 1) == " ") {
                     map.deleteObj(enemy);
                     enemy.move("up");
@@ -121,21 +121,26 @@ int main(){
 
     Map Map(mapSize);
     Map.setMap();
-    
-    Kapal kapalPlayer("Player");
-    Kapal kapalMusuh("Musuh");
 
-    kapalPlayer.setX(0);
-    kapalPlayer.setY(0);
+    Kapal kapalPlayer("P");
+    Kapal kapalMusuh("M");
+
+    kapalPlayer.setX(8);
+    kapalPlayer.setY(8);
 
     do {
-        kapalMusuh.setX(rand() % mapSize);
-        kapalMusuh.setY(rand() % mapSize);
-    } while (kapalMusuh.getX()==kapalPlayer.getX() && kapalMusuh.getY()==kapalPlayer.getY());
+        kapalMusuh.setX(rand() % 9+1);
+        kapalMusuh.setY(rand() % 9+1);
+    } while (kapalMusuh.getX()==kapalPlayer.getX() &&
+    kapalMusuh.getY()==kapalPlayer.getY());
 
-    
+
     int choice = 0;
     int enemyDefeated = 0;
+    cout<<"posisi kita ("<<kapalPlayer.getX()-8<<","<<kapalPlayer.getY()-8<<")"<<endl;
+    cout<<"posisi musuh ("<<kapalMusuh.getX()<<","<<kapalMusuh.getY()<<")"<<endl;
+    Map.setObj(kapalPlayer);
+    Map.setObj(kapalMusuh);
 
     while (kapalPlayer.getHealth() > 0) {
         system("cls");
@@ -154,7 +159,7 @@ int main(){
                 movePlayer(kapalPlayer, Map);
                 break;
             }
-            
+
             case 2: {
                 kapalPlayer.attack(kapalMusuh);
             }
@@ -170,11 +175,12 @@ int main(){
             enemyDefeated++;
 
             do {
-                kapalMusuh.setX(rand() % mapSize);
-                kapalMusuh.setY(rand() % mapSize);
+                kapalMusuh.setX(rand() % 9+1);
+                kapalMusuh.setY(rand() % 9+1);
             } while (kapalMusuh.getX()==kapalPlayer.getX() && kapalMusuh.getY()==kapalPlayer.getY());
-            
+
             kapalMusuh.setHealth(100);
+            Map.deleteObj(kapalMusuh);
             Map.setObj(kapalMusuh);
             break;
         } else {
@@ -191,11 +197,16 @@ int main(){
                 moveEnemy(kapalMusuh, Map);
             }
         }
-
+        cout<<"posisi kita ("<<kapalPlayer.getX()-8<<","<<kapalPlayer.getY()-8<<")"<<endl;
+        cout<<"posisi musuh ("<<kapalMusuh.getX()<<","<<kapalMusuh.getY()<<")"<<endl;
     }
 
     cout << "Game Over" << endl;
     cout << "You defeated " << enemyDefeated << " enemy ships" << endl;
+
+//    Map anu(16);
+//    anu.setMap();
+//    anu.showMap();
 
     return 0;
 }

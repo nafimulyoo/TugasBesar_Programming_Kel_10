@@ -5,6 +5,7 @@
 #include "kapal.h"
 #include <iostream>
 #include <cstdlib>
+#include <math.h>
 
 
 void Kapal::setX(int x) {
@@ -19,13 +20,13 @@ void Kapal::setHealth(int health) {
 
 void Kapal::move(string direction) {
     if (direction=="up"){
-        this->position_y+=1;
+        setY(this->position_y+1);
     } else if (direction=="down"){
-        this->position_y-=1;
+        setY(this->position_y-1);
     } else if (direction=="left"){
-        this->position_x-=1;
+        setX(this->position_x-1);
     } else if (direction=="right"){
-        this->position_x+=1;
+        setX(this->position_x+1);
     }
 }
 
@@ -42,9 +43,9 @@ void Kapal::attack(Kapal &other) {
 }
 
 int Kapal::calculateRange(Kapal other) {
-    int x = abs(this->position_x-other.position_x);
-    int y = abs(this->position_y-other.position_y);
-    return x+y;
+    int x = abs(this->position_x-other.position_x)*abs(this->position_x-other.position_x);
+    int y = abs(this->position_y-other.position_y)*abs(this->position_y-other.position_y);
+    return sqrt(x+y);
 }
 
 void Kapal::decreaseHealth(int damage) {
@@ -58,4 +59,19 @@ int Kapal::getX() {
 }
 int Kapal::getY() {
     return this->position_y;
+}
+string Kapal::getName() {
+    return this->name;
+}
+int Kapal::getHealth() {
+    return this->health;
+}
+int Kapal::getDamage() {
+    return this->damage;
+}
+int Kapal::getMaxShootRange() {
+    return this->max_shoot_range;
+}
+bool Kapal::isDeath() {
+    return this->health<=0;
 }
